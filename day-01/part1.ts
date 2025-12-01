@@ -4,14 +4,9 @@ const START = 50;
 const UPPER = 100;
 
 const dial = (v: number): number => {
-  while(v < 0 || v >= UPPER) {
-    if (v < 0) {
-      v = UPPER + v;
-    } else if (v >= UPPER) {
-      v = v % UPPER;
-    }
-  }
-  return v;
+  return v < 0
+    ? (UPPER + (v % UPPER)) % UPPER
+    : v % UPPER;
 }
 
 export const execute: Execute = (lines) => {
